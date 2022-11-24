@@ -38,6 +38,7 @@ email_message['subject'] = 'تغییر قیمت دیجی کالا'
 email_message.attach(MIMEText(f"بدو بدو قیمتش اومده پایین😍😍😍😍\n + {url}"))
 
 while True:
+    print("Started")
     driver.get(url)
     price_persian_value = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, XPATH))).text
