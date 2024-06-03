@@ -28,8 +28,10 @@ def persian_to_english(number):
 url = 'https://www.digikala.com/product/dkp-722339/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%85%D8%BA%D8%A7%D8%B2%D9%87-%D8%AE%D9%88%D8%AF%DA%A9%D8%B4%DB%8C-%D8%A7%D8%AB%D8%B1-%DA%98%D8%A7%D9%86-%D8%AA%D9%88%D9%84%DB%8C/'
 XPATH = '/html/body/div[1]/div[1]/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[3]/div[1]/div[7]/div/div[2]/div[1]/div[2]/div[2]/span'
 DRIVER_PATH = 'chromedriver'
+
 driver = webdriver.Chrome(executable_path=DRIVER_PATH)
 sleep_time_seconds = 7
+price_bound = 40000
 
 email_message = MIMEMultipart()
 email_message['from'] = 'Digikala BOT'
@@ -43,11 +45,11 @@ while True:
     price_persian_value = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, XPATH))).text
 
-    if is_price_less_than_key(persian_to_english(price_persian_value), 40000):
+    if is_price_less_than_key(persian_to_english(price_persian_value), price_bound):
         with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
             smtp.ehlo()
             smtp.starttls()
-            smtp.login('mamf.you@gmail.com', 'nfrqxyekxcgeniko')
+            smtp.login('your_smtp_email', 'your_password')
             smtp.send_message(email_message)
             print('email sent')
 
