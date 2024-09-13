@@ -27,9 +27,8 @@ def persian_to_english(number):
 
 url = 'https://www.digikala.com/product/dkp-722339/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%85%D8%BA%D8%A7%D8%B2%D9%87-%D8%AE%D9%88%D8%AF%DA%A9%D8%B4%DB%8C-%D8%A7%D8%AB%D8%B1-%DA%98%D8%A7%D9%86-%D8%AA%D9%88%D9%84%DB%8C/'
 XPATH = '/html/body/div[1]/div[1]/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[3]/div[1]/div[7]/div/div[2]/div[1]/div[2]/div[2]/span'
-DRIVER_PATH = 'chromedriver'
 
-driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+driver = webdriver.Chrome()
 sleep_time_seconds = 7
 price_bound = 40000
 
